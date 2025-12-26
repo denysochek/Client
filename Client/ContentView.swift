@@ -4,7 +4,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         MainView()
-            .frame(minWidth: 960, minHeight: 480)
+            .frame(minWidth: 1100, minHeight: 550)
             .navigationTitle("")
     }
 }
@@ -12,7 +12,7 @@ struct ContentView: View {
 // MARK: - Main Interface
 struct MainView: View {
     @State private var selectedInstance: GameInstance?
-    @State private var activeTab: String = "LOG"
+    @State private var activeTab: String = "log"
     @State private var isDetailVisible: Bool = true
     
     @State private var instances = [
@@ -45,7 +45,7 @@ struct MainView: View {
                 Spacer()
                 UserProfileView()
             }
-            .navigationSplitViewColumnWidth(min: 200, ideal: 240, max: 300)
+            .navigationSplitViewColumnWidth(min: 234, ideal: 234, max: 350)
 
         } detail: {
             // MARK: - Main Content Area
@@ -117,10 +117,11 @@ struct MainView: View {
                 ToolbarItemGroup(placement: .primaryAction) {
                     // Асети (Лише іконки)
                     HStack(spacing: 0) {
-                        TabButton(icon: "puzzlepiece", label: "MODS", id: "MODS", activeTab: $activeTab)
-                        TabButton(icon: "archivebox", label: "RES", id: "RES", activeTab: $activeTab)
-                        TabButton(icon: "sun.max", label: "SHADERS", id: "SHADERS", activeTab: $activeTab)
-                        TabButton(icon: "globe", label: "WORLDS", id: "WORLDS", activeTab: $activeTab)
+                        TabButton(icon: "puzzlepiece.extension", label: "Mods", id: "mod", activeTab: $activeTab)
+                        TabButton(icon: "archivebox", label: "Resource Packs", id: "res", activeTab: $activeTab)
+                        TabButton(icon: "sun.max", label: "Shaders", id: "sha", activeTab: $activeTab)
+                        TabButton(icon: "globe", label: "Worlds", id: "wrl", activeTab: $activeTab)
+                        TabButton(icon: "server.rack", label: "Servers", id: "ser", activeTab: $activeTab)
                     }
                     .background(Color.primary.opacity(0.05))
                     .cornerRadius(8)
@@ -128,8 +129,8 @@ struct MainView: View {
                     
                     // Закріплені жовті асети
                     HStack(spacing: 0) {
-                        TabButton(icon: "doc.text.fill", label: "LOG", id: "LOG", activeTab: $activeTab, customColor: .orange)
-                        TabButton(icon: "gearshape.fill", label: "SETTINGS", id: "SETTINGS", activeTab: $activeTab, customColor: .orange)
+                        TabButton(icon: "doc.text.fill", label: "Log", id: "log", activeTab: $activeTab, customColor: .orange)
+                        TabButton(icon: "gearshape.fill", label: "Settings", id: "set", activeTab: $activeTab, customColor: .orange)
                     }
                     .background(Color.orange.opacity(0.05))
                     .cornerRadius(8)
@@ -141,7 +142,7 @@ struct MainView: View {
                             isDetailVisible.toggle()
                         }
                     }) {
-                        Label("Toggle Details", systemImage: "sidebar.right")
+                        Label("Toggle Details", systemImage: "sidebar.squares.trailing")
                     }
                 }
             }
@@ -191,7 +192,7 @@ struct UserProfileView: View {
                 .frame(width: 32, height: 32)
                 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("Denysocheck")
+                    Text("Verylongnickname")
                         .font(.system(size: 13, weight: .semibold))
                     HStack(spacing: 4) {
                         Circle().fill(.green).frame(width: 6, height: 6)
